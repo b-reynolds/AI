@@ -1,3 +1,9 @@
 ﻿  main.cpp
+  DogStateEat.cpp
+  Dog.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  DogStateWalk.cpp
+  DogStateSleep.cpp
   FSM.vcxproj -> C:\Users\Ben\Desktop\portfolio-b-reynolds\fsm\Debug\FSM.exe
   FSM.vcxproj -> C:\Users\Ben\Desktop\portfolio-b-reynolds\fsm\Debug\FSM.pdb (Partial PDB)

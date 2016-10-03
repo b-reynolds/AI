@@ -15,6 +15,7 @@ class Dog {
 public:
 
 	Dog();
+	~Dog();
 
 	void Live();
 

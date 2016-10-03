@@ -10,6 +10,12 @@ Dog::Dog() {
 	State = State_Sleep;
 }
 
+Dog::~Dog() {
+	delete State_Walk;
+	delete State_Eat;
+	delete State_Sleep;
+}
+
 void Dog::Live() {
 
 	if(State == State_Sleep) {
