@@ -110,7 +110,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dog.cpp" />
+    <ClCompile Include="DogStateEat.cpp" />
+    <ClCompile Include="DogStateSleep.cpp" />
+    <ClCompile Include="DogStateWalk.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Dog.h" />
+    <ClInclude Include="DogState.h" />
+    <ClInclude Include="DogStateEat.h" />
+    <ClInclude Include="DogStateSleep.h" />
+    <ClInclude Include="DogStateWalk.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
