@@ -10,15 +10,18 @@ class Dog {
 	DogState* State_Eat;
 	DogState* State_Walk;
 
+	DogState* Current_State;
+
 public:
 
-	DogState* Current_State;
 	enum States { Sleep, Eat, Walk };
 
 	short Energy;
 	short Hunger;
 
 	Dog();
+
+	void Update();
 	void Change_State(States _State);
 
 };

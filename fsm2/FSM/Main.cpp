@@ -14,7 +14,7 @@ int main() {
 		std::cout << std::string(25, '=') << std::endl;
 
 		for(int i = 0; i < 10; i++) {
-			Dog.Current_State->Update(&Dog);
+			Dog.Update();
 			Sleep(1250);
 		}
 

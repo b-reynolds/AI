@@ -13,6 +13,12 @@ Dog::Dog() {
 
 }
 
+void Dog::Update() {
+	
+	Current_State->Update(this);
+
+}
+
 void Dog::Change_State(States _State) {
 
 	Current_State->Exit(this);
