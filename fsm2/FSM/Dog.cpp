@@ -21,6 +21,8 @@ void Dog::Update() {
 
 void Dog::Change_State(States _State) {
 
+	Current_State->Exit(this);
+
 	switch(_State) {
 		case Sleep:
 			Current_State = State_Sleep;
@@ -33,5 +35,7 @@ void Dog::Change_State(States _State) {
 		default: 
 			break;
 	}
+
+	Current_State->Enter(this);
 
 }

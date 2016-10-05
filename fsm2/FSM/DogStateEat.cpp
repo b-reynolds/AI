@@ -1,7 +1,7 @@
 #include "DogStateEat.h"
 
 void DogStateEat::Enter(Dog* _Dog) {
-
+	std::cout << "Started eating" << std::endl;
 }
 
 void DogStateEat::Update(Dog* _Dog) {
@@ -13,5 +13,5 @@ void DogStateEat::Update(Dog* _Dog) {
 }
 
 void DogStateEat::Exit(Dog* _Dog) {
-	
+	std::cout << "Stopped eating" << std::endl;
 }

@@ -1,7 +1,7 @@
 #include "DogStateSleep.h"
 
 void DogStateSleep::Enter(Dog* _Dog) {
-	
+	std::cout << "Started sleeping" << std::endl;
 }
 
 void DogStateSleep::Update(Dog* _Dog) {
@@ -13,5 +13,5 @@ void DogStateSleep::Update(Dog* _Dog) {
 }
 
 void DogStateSleep::Exit(Dog* _Dog) {
-	
+	std::cout << "Stopped sleeping" << std::endl;
 }

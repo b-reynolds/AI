@@ -1,7 +1,7 @@
 #include "DogStateWalk.h"
 
 void DogStateWalk::Enter(Dog* _Dog) {
-
+	std::cout << "Started walking" << std::endl;
 }
 
 void DogStateWalk::Update(Dog* _Dog) {
@@ -17,5 +17,5 @@ void DogStateWalk::Update(Dog* _Dog) {
 }
 
 void DogStateWalk::Exit(Dog* _Dog) {
-
+	std::cout << "Stopped walking" << std::endl;
 }
