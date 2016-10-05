@@ -19,6 +19,7 @@ int main() {
 		}
 
 		system("cls");
+
 	}
 
 }

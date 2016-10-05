@@ -8,11 +8,9 @@ Dog::Dog() {
 	State_Sleep = new DogStateSleep;
 	State_Eat = new DogStateEat;
 	State_Walk = new DogStateWalk;
-	Current_State = State_Sleep;
-}
 
-Dog::~Dog() {
-	
+	Current_State = State_Sleep;
+
 }
 
 void Dog::Change_State(States _State) {

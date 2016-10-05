@@ -19,8 +19,6 @@ public:
 	short Hunger;
 
 	Dog();
-	~Dog();
-
 	void Change_State(States _State);
 
 };
