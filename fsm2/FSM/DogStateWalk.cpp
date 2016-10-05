@@ -5,10 +5,10 @@ void DogStateWalk::Enter(Dog* _Dog) {
 }
 
 void DogStateWalk::Update(Dog* _Dog) {
-	std::cout << "Walking" << std::endl;
-	_Dog->Energy -= 25;
-	_Dog->Hunger += 25;
-	if(_Dog->Hunger >= 50) {
+	_Dog->Energy = _Dog->Energy - 25 >= 0 ? _Dog->Energy - 25 : 0;
+	_Dog->Hunger = _Dog->Hunger + 25 <= 100 ? _Dog->Hunger + 25 : 100;
+	std::cout << "Walking... (Energy: " << _Dog->Energy << ", Hunger: " << _Dog->Hunger << ")" << std::endl;
+	if(_Dog->Hunger >= 100) {
 		_Dog->Change_State(_Dog->Eat);
 	}
 	else if(_Dog->Energy <= 0) {

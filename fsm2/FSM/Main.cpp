@@ -15,7 +15,7 @@ int main() {
 
 		for(int i = 0; i < 10; i++) {
 			Dog.Update();
-			Sleep(750);
+			Sleep(1250);
 		}
 
 		system("cls");

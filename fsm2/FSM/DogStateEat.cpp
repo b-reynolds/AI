@@ -5,8 +5,8 @@ void DogStateEat::Enter(Dog* _Dog) {
 }
 
 void DogStateEat::Update(Dog* _Dog) {
-	std::cout << "Eating" << std::endl;
-	_Dog->Hunger -= 25;
+	_Dog->Hunger = _Dog->Hunger - 25 >= 0 ? _Dog->Hunger - 25 : 0;
+	std::cout << "Eating... (Hunger: " << _Dog->Hunger << ")" << std::endl;
 	if(_Dog->Hunger == 0) {
 		_Dog->Change_State(_Dog->Walk);
 	}
