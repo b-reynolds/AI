@@ -15,7 +15,7 @@ Lumberjack::Lumberjack(sf::Texture* _Texture, sf::Font* _Font) {
 	Text.setCharacterSize(12);
 	Text.setString("Walking");
 
-	Speed = 100;
+	Speed = 250;
 	Hunger = 0;
 	Wood = 0;
 	Energy = 100;
@@ -100,7 +100,7 @@ void Lumberjack::Change_State(States _State) {
 			break;
 		case Sleep:
 			State = State_Sleep;
-			Text.setString("Sleeping");
+			Text.setString("Sleep");
 			break;
 		case Harvest:
 			State = State_Harvest;
