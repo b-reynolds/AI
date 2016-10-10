@@ -1,4 +1,6 @@
 #include <glut.h>
+#include "Vector2f.h"
+#include <iostream>
 
 const GLint RES_X = GetSystemMetrics(SM_CXSCREEN);
 const GLint RES_Y = GetSystemMetrics(SM_CYSCREEN);
