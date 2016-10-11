@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Agent.h"
+#include <iostream>
 
 int main() {
 
@@ -8,7 +9,12 @@ int main() {
 		return 1;
 	}
 
-	Agent A(&Txtr_Agent, sf::Vector2f(0, 0));
+	std::vector<Agent> Agents;
+
+	for(auto i = 1; i <= 1; ++i) {
+		Agent T(&Txtr_Agent, sf::Vector2f(-64 * i, i * 64));
+		Agents.push_back(T);
+	}
 
 	sf::RenderWindow Window(sf::VideoMode(800, 600), "Steering Behaviours");
 
@@ -23,8 +29,10 @@ int main() {
 
 		Window.clear(sf::Color::White);
 
-		A.Update(sf::Vector2f(sf::Mouse::getPosition(Window).x, sf::Mouse::getPosition(Window).y));
-		A.Draw(&Window);
+		for (auto i = 0; i < Agents.size(); ++i) {
+			Agents[i].Update(sf::Vector2f(sf::Mouse::getPosition(Window).x, sf::Mouse::getPosition(Window).y));
+			Agents[i].Draw(&Window);
+		}
 
 		Window.display();
 
