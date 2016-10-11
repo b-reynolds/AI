@@ -7,6 +7,7 @@ class Agent {
 	sf::Vector2f Position;
 	sf::Sprite Sprite;
 	float Max_Speed, Max_Force;
+	const float PI = 3.14159265;
 
 public:
 

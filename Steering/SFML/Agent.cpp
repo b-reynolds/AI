@@ -19,7 +19,6 @@ void Agent::Seek(sf::Vector2f _Target) {
 
 void Agent::Update(sf::Vector2f _Target) { 
 
-	float PI = 3.14159265;
 	float DX = Sprite.getPosition().x - _Target.x;
 	float DY = Sprite.getPosition().y - _Target.y;
 	float Rotation = (atan2(DY, DX) * 180 / PI);
