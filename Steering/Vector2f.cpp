@@ -1,5 +1,10 @@
 #include "Vector2f.h"
 
+Vector2f::Vector2f() {
+	X = 0.0f;
+	Y = 0.0f;
+}
+
 Vector2f::Vector2f(GLfloat _X, GLfloat _Y) {
 	X = _X;
 	Y = _Y;

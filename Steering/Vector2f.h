@@ -8,6 +8,7 @@ public:
 
 	GLfloat X, Y;
 
+	Vector2f();
 	Vector2f(GLfloat _X, GLfloat _Y);
 
 	static Vector2f Add(Vector2f _V1, Vector2f _V2);
