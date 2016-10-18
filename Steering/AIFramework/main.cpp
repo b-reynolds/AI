@@ -35,7 +35,7 @@ int main() {
 		Window.display();
 
 		Delta_Time = Delta_Clock.restart().asSeconds();
-		std::cout << "Delta Time: " << Delta_Time << std::endl;
+
 	}
 
 	return 0;
