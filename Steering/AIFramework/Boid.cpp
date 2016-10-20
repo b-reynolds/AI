@@ -51,14 +51,18 @@ void Boid::Think(float _Delta_Time) {
 
 	}
 
+	std::cout << "Velocity (" << Velocity.x << ", " << Velocity.y << ")" << std::endl;
+	std::cout << "Acceleration (" << Acceleration.x << ", " << Acceleration.y << ")" << std::endl;
+
 	Velocity = (Vector::Normalize(Velocity + Acceleration));
 
-	std::cout << "Velocity (" << Velocity.x << ", " << Velocity.y << ")" << std::endl;
+
 
 	Rotate_Towards(Velocity);
 	Move(Velocity);
 
 	Acceleration = Vector::Zero();
+
 
 	system("cls");
 
@@ -70,19 +74,26 @@ void Boid::Arrive(sf::Vector2f _Target) {
 	float Distance = Vector::Magnitude(Desired_Velocity);
 	Desired_Velocity = Vector::Normalize(Desired_Velocity);
 
-	if(Distance < 100) {
-		float M = SPEED * (Distance / 100);
-		Desired_Velocity = Desired_Velocity * M;
+	std::cout << "Distance: " << Distance << std::endl;
+
+	if (Distance > 2.5f) {
+
+		if (Distance < 100) {
+			float M = SPEED * (Distance / 100);
+			Desired_Velocity = Desired_Velocity * M;
+		} else {
+			Desired_Velocity = Desired_Velocity * SPEED;
+		}
+
+		sf::Vector2f Steering_Force = Desired_Velocity - Velocity;
+
+		Steering_Force = Vector::Limit_Magnitude(Steering_Force, MAX_FORCE);
+
+		std::cout << "Steering Force: " << Steering_Force.x << ", " << Steering_Force.y << std::endl;
+
+		Apply_Force(Steering_Force);
+
 	}
-	else {
-		Desired_Velocity = Desired_Velocity * SPEED;
-	}
-
-	sf::Vector2f Steering_Force = Desired_Velocity - Velocity;
-
-	Steering_Force = Vector::Limit_Magnitude(Steering_Force, MAX_FORCE);
-
-	Apply_Force(Steering_Force);
 
 }
 
