@@ -33,21 +33,25 @@ void Boid::Think(float _Delta_Time) {
 
 	switch(State) {
 		case States::StSeek:
+			std::cout << "State: Seeking" << std::endl;
 			Seek(Target);
 			break;
 		case States::StPursue:
+			std::cout << "State: Pursuing" << std::endl;
 			Pursue(Target);
 			break;
 		case States::StArrive:
+			std::cout << "State: Arriving" << std::endl;
 			Arrive(Target);
 			break;
 		case States::StEvade:
+			std::cout << "State: Evading" << std::endl;
 			Evade(Target);
 			break;
 
 	}
 
-	Velocity = (Vector::Normalize(Velocity + Acceleration) * SPEED);
+	Velocity = (Vector::Normalize(Velocity + Acceleration));
 
 	std::cout << "Velocity (" << Velocity.x << ", " << Velocity.y << ")" << std::endl;
 
@@ -55,6 +59,8 @@ void Boid::Think(float _Delta_Time) {
 	Move(Velocity);
 
 	Acceleration = Vector::Zero();
+
+	system("cls");
 
 }
 

@@ -13,8 +13,8 @@ public:
 	enum States { StEvade, StSeek, StPursue, StArrive };
 	enum States State;
 
-	const float SPEED = 0.1f;
-	const float MAX_FORCE = 0.1f;
+	const float SPEED = 0.001f;
+	const float MAX_FORCE = 3.f;
 
 	void Apply_Force(sf::Vector2f _Force);
 	void Move(sf::Vector2f _Velocity);
