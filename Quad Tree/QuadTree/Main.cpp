@@ -1,8 +1,30 @@
 #include <SFML/Graphics.hpp>
+#include "Object.h"
+#include "QuadTree.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Quad Tree");
+
+	sf::Texture txtObject;
+	if(!txtObject.loadFromFile("sprite.png"))
+	{
+		return 1;
+	}
+
+
+	sf::RenderWindow window(sf::VideoMode(640, 640), "Quad Tree");
+
+	std::vector<Object> objects;
+
+	Object myObject(&txtObject);
+	myObject.setPosition(sf::Vector2f(32, 32));
+	objects.push_back(myObject);
+
+	Object myOtherObject(&txtObject);
+	myOtherObject.setPosition(sf::Vector2f(576, 576));
+	objects.push_back(myOtherObject);
+
+	QuadTree quadTree(window.getSize(), &objects);
 
 	while (window.isOpen())
 	{
@@ -16,7 +38,14 @@ int main()
 			}
 		}
 
-		window.clear(sf::Color::White);
+		window.clear(sf::Color::Black);
+
+		for(auto& object : objects)
+		{
+			object.draw(&window);
+		}
+
+		quadTree.draw(&window);
 
 		window.display();
 
