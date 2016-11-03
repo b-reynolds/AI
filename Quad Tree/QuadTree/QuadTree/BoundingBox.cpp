@@ -15,10 +15,10 @@ bool BoundingBox::containsPoint(Coordinate point)
 
 bool BoundingBox::intersects(BoundingBox boundingBox)
 {
-	return(center.x - halfDimension < boundingBox.center.x + boundingBox.halfDimension) &&
-		(center.x + halfDimension > boundingBox.center.x - halfDimension) &&
-		(center.y - halfDimension < boundingBox.center.y + halfDimension) &&
-		(center.y + halfDimension > boundingBox.center.y - halfDimension);
+	return (center.x - halfDimension < boundingBox.center.x + boundingBox.halfDimension) &&
+		(center.x + halfDimension > boundingBox.center.x - boundingBox.halfDimension) &&
+		(center.y - halfDimension < boundingBox.center.y + boundingBox.halfDimension) &&
+		(center.y + halfDimension > boundingBox.center.y - boundingBox.halfDimension);
 }
 
 void BoundingBox::draw(sf::RenderWindow * window)
