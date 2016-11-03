@@ -106,27 +106,29 @@ std::vector<Coordinate> QuadTree::queryRange(BoundingBox range)
 		pointsInRange.push_back(point);
 	}
 
-	for (auto& point : northWest->queryRange(range))
+	for (auto& point : northEast->queryRange(range))
 	{
 		pointsInRange.push_back(point);
 	}
 
-	for (auto& point : northWest->queryRange(range))
+	for (auto& point : southWest->queryRange(range))
 	{
 		pointsInRange.push_back(point);
 	}
 
-	for (auto& point : northWest->queryRange(range))
+	for (auto& point : southEast->queryRange(range))
 	{
 		pointsInRange.push_back(point);
 	}
+
+	return pointsInRange;
 
 }
 
 void QuadTree::draw(sf::RenderWindow * window)
 {
 
-	for (auto& point : points) {
+	for (auto& point : queryRange(boundary)) {
 		point.draw(window);
 	}
 
