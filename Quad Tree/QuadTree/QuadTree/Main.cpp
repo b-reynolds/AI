@@ -6,6 +6,7 @@ int main()
 {
 	const unsigned int RESY = sf::VideoMode::getDesktopMode().height;
 	unsigned int winSize = 0;
+	unsigned int nodeCapacity;
 
 	std::cout << "==========================================" << std::endl;
 	std::cout << "       SFML Quadtree Implementation       " << std::endl;
@@ -16,6 +17,8 @@ int main()
 	std::cout << "==========================================" << std::endl;
 	printf("Size (Max: %i):", RESY);
 	std::cin >> winSize;
+	std::cout << "Node Capacity: ";
+	std::cin >> nodeCapacity;
 	std::cout << "==========================================" << std::endl;
 
 	if (winSize > RESY || winSize <= 0)
@@ -23,9 +26,13 @@ int main()
 		winSize = RESY;
 	}
 
+	if (nodeCapacity <= 0) {
+		nodeCapacity = 1;
+	}
+
 	sf::RenderWindow window(sf::VideoMode(winSize, winSize), "Quad Tree");
 
-	QuadTree* quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2));
+	QuadTree* quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2), nodeCapacity);
 	
 	while (window.isOpen())
 	{
@@ -45,7 +52,7 @@ int main()
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 		{
 			delete quadTree;
-			quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2));
+			quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2), nodeCapacity);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 		{

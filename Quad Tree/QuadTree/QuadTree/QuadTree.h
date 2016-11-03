@@ -5,11 +5,10 @@
 class QuadTree
 {
 
-public:
+private:
 
-	const int NODE_CAPACITY = 1;
+	unsigned int nodeCapacity = 0;
 
-	BoundingBox boundary;
 
 	std::vector<Point> points;
 
@@ -18,13 +17,18 @@ public:
 	QuadTree* southWest;
 	QuadTree* southEast;
 
-	QuadTree(BoundingBox boundary);
+	void subdivide();
+
+public:
+
+	BoundingBox boundary;
+	std::vector<Point> queryRange(BoundingBox range);
+
+
+	QuadTree(BoundingBox boundary, int nodeCapacity);
 	~QuadTree();
 
 	bool insert(Point Point);
-	void subdivide();
-	std::vector<Point> queryRange(BoundingBox range);
-
 	void draw(sf::RenderWindow *window);
 
 };
