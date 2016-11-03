@@ -21,34 +21,41 @@ bool QuadTree::insert(Coordinate coordinate)
 {
 	if (!boundary.containsPoint(coordinate))
 	{
+		std::cout << "Boundary does not contain point..." << std::endl;
 		return false;
 	}
 
 	if (points.size() < NODE_CAPACITY)
 	{
+		std::cout << "Inserting point (" << (points.size() + 1) << "/" << NODE_CAPACITY << ")..." << std::endl;
 		points.push_back(coordinate);
 		return true;
 	}
 
 	if (northWest == nullptr)
 	{
+		std::cout << "Subdividing..." << std::endl;
 		subdivide();
 	}
 
 	if (northWest->insert(coordinate))
 	{
+		std::cout << "Inserting point NW..." << std::endl;
 		return true;
 	}
 	else if (northEast->insert(coordinate))
 	{
+		std::cout << "Inserting point NE..." << std::endl;
 		return true;
 	}
 	else if (southWest->insert(coordinate))
 	{
+		std::cout << "Inserting point SW..." << std::endl;
 		return true;
 	}
 	else if (southEast->insert(coordinate))
 	{
+		std::cout << "Inserting point SE..." << std::endl;
 		return true;
 	}
 
@@ -68,6 +75,8 @@ void QuadTree::subdivide()
 
 	center = Coordinate(boundary.center.x + boundary.halfDimension, boundary.center.y + boundary.halfDimension);
 	southEast = new QuadTree(BoundingBox(center.x, center.y, boundary.halfDimension));
+
+	std::cout << "Subdivided..." << std::endl;
 }
 
 std::vector<Coordinate> QuadTree::queryRange(BoundingBox range)
@@ -126,20 +135,8 @@ void QuadTree::draw(sf::RenderWindow * window)
 	if (northWest != nullptr)
 	{
 		northWest->draw(window);
-	}
-
-	if (northEast != nullptr)
-	{
 		northEast->draw(window);
-	}
-
-	if (southWest != nullptr)
-	{
 		southWest->draw(window);
-	}
-
-	if (southEast != nullptr)
-	{
 		southEast->draw(window);
 	}
 

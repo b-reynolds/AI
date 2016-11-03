@@ -1,5 +1,6 @@
 #pragma once
 #include "BoundingBox.h"
+#include <iostream>
 
 class QuadTree
 {
