@@ -64,18 +64,14 @@ bool QuadTree::insert(Coordinate coordinate)
 
 void QuadTree::subdivide()
 {
-	Coordinate center = Coordinate(boundary.center.x - boundary.halfDimension, boundary.center.y - boundary.halfDimension);
-	northWest = new QuadTree(BoundingBox(center.x, center.y, boundary.halfDimension));
-
-	center = Coordinate(boundary.center.x + boundary.halfDimension, boundary.center.y - boundary.halfDimension);
-	northEast = new QuadTree(BoundingBox(center.x, center.y, boundary.halfDimension));
-
-	center = Coordinate(boundary.center.x - boundary.halfDimension, boundary.center.y + boundary.halfDimension);
-	southWest = new QuadTree(BoundingBox(center.x, center.y, boundary.halfDimension));
-
-	center = Coordinate(boundary.center.x + boundary.halfDimension, boundary.center.y + boundary.halfDimension);
-	southEast = new QuadTree(BoundingBox(center.x, center.y, boundary.halfDimension));
-
+	northWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension,
+		boundary.center.y - boundary.halfDimension, boundary.halfDimension));
+	northEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension,
+		boundary.center.y - boundary.halfDimension, boundary.halfDimension));
+	southWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension,
+		boundary.center.y + boundary.halfDimension, boundary.halfDimension));
+	southEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension,
+		boundary.center.y + boundary.halfDimension, boundary.halfDimension));
 	std::cout << "Subdivided..." << std::endl;
 }
 
@@ -122,15 +118,10 @@ std::vector<Coordinate> QuadTree::queryRange(BoundingBox range)
 	}
 
 	return pointsInRange;
-
 }
 
 void QuadTree::draw(sf::RenderWindow * window)
 {
-
-	for (auto& point : queryRange(boundary)) {
-		point.draw(window);
-	}
 
 	boundary.draw(window);
 
