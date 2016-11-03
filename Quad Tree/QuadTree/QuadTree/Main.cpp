@@ -32,7 +32,7 @@ int main()
 		nodeCapacity = 1;
 	}
 
-	sf::RenderWindow window(sf::VideoMode(winSize, winSize), "Quad Tree", sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(winSize, winSize), "Quadtree", sf::Style::Close);
 
 	QuadTree* quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2), nodeCapacity);
 	
