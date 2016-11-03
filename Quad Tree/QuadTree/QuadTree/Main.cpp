@@ -1,15 +1,15 @@
 #include <SFML/Graphics.hpp>
+#include "QuadTree.h"
+#include <iostream>
 
 int main()
 {
 
-	sf::Texture txtObject;
-	if(!txtObject.loadFromFile("sprite.png"))
-	{
-		return 1;
-	}
-
 	sf::RenderWindow window(sf::VideoMode(640, 640), "Quad Tree");
+
+	QuadTree quadTree(BoundingBox(320, 320, 320));
+
+
 
 	while (window.isOpen())
 	{
@@ -21,9 +21,15 @@ int main()
 			{
 				window.close();
 			}
+			else if (event.type == sf::Event::MouseButtonPressed)
+			{
+				quadTree.insert(Coordinate(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
+			}
 		}
 
 		window.clear();
+
+		quadTree.draw(&window);
 
 		window.display();
 
