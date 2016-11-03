@@ -29,6 +29,11 @@ int main()
 
 		quadTree.draw(&window);
 
+		for (auto& point : quadTree.queryRange(quadTree.boundary))
+		{
+			point.draw(&window);
+		}
+
 		window.display();
 
 	}
