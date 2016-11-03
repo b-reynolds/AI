@@ -22,41 +22,41 @@ bool QuadTree::insert(Point point)
 {
 	if (!boundary.containsPoint(point))
 	{
-		std::cout << "Boundary does not contain point..." << std::endl;
+		printf("Point out of bounds\n");
 		return false;
 	}
 
 	if (points.size() < nodeCapacity)
 	{
-		std::cout << "Inserting point (" << (points.size() + 1) << "/" << nodeCapacity << ")..." << std::endl;
 		points.push_back(point);
+		printf("Inserted point (%i/%i)\n", points.size(), nodeCapacity);
 		return true;
 	}
 
 	if (northWest == nullptr)
 	{
-		std::cout << "Subdividing..." << std::endl;
 		subdivide();
+		printf("Subdivided\n");
 	}
 
 	if (northWest->insert(point))
 	{
-		std::cout << "Inserted point NW..." << std::endl;
+		printf("Point inserted NW\n");
 		return true;
 	}
 	else if (northEast->insert(point))
 	{
-		std::cout << "Inserted point NE..." << std::endl;
+		printf("Point inserted NE\n");
 		return true;
 	}
 	else if (southWest->insert(point))
 	{
-		std::cout << "Inserted point SW..." << std::endl;
+		printf("Point inserted SW\n");
 		return true;
 	}
 	else if (southEast->insert(point))
 	{
-		std::cout << "Inserted point SE..." << std::endl;
+		printf("Point inserted SE\n");
 		return true;
 	}
 
@@ -65,15 +65,14 @@ bool QuadTree::insert(Point point)
 
 void QuadTree::subdivide()
 {
-	northWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension / 2,
-		boundary.center.y - boundary.halfDimension / 2, boundary.halfDimension / 2), nodeCapacity);
-	northEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension / 2,
-		boundary.center.y - boundary.halfDimension / 2, boundary.halfDimension / 2), nodeCapacity);
-	southWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension / 2,
-		boundary.center.y + boundary.halfDimension / 2, boundary.halfDimension / 2), nodeCapacity);
-	southEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension / 2,
-		boundary.center.y + boundary.halfDimension / 2, boundary.halfDimension / 2), nodeCapacity);
-	std::cout << "Subdivided..." << std::endl;
+	northWest = new QuadTree(BoundingBox(boundary.getCenter().getX() - boundary.getHalfDimension() / 2,
+		boundary.getCenter().getY() - boundary.getHalfDimension() / 2, boundary.getHalfDimension() / 2), nodeCapacity);
+	northEast = new QuadTree(BoundingBox(boundary.getCenter().getX() + boundary.getHalfDimension() / 2,
+		boundary.getCenter().getY() - boundary.getHalfDimension() / 2, boundary.getHalfDimension() / 2), nodeCapacity);
+	southWest = new QuadTree(BoundingBox(boundary.getCenter().getX() - boundary.getHalfDimension() / 2,
+		boundary.getCenter().getY() + boundary.getHalfDimension() / 2, boundary.getHalfDimension() / 2), nodeCapacity);
+	southEast = new QuadTree(BoundingBox(boundary.getCenter().getX() + boundary.getHalfDimension() / 2,
+		boundary.getCenter().getY() + boundary.getHalfDimension() / 2, boundary.getHalfDimension() / 2), nodeCapacity);
 }
 
 std::vector<Point> QuadTree::queryRange(BoundingBox range)
@@ -132,6 +131,11 @@ void QuadTree::draw(sf::RenderWindow * window)
 		northEast->draw(window);
 		southWest->draw(window);
 		southEast->draw(window);
+	}
+
+	for (auto& point : queryRange(boundary))
+	{
+		point.draw(window);
 	}
 
 }
