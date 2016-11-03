@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 class Coordinate
 {
@@ -10,6 +11,8 @@ public:
 
 	Coordinate();
 	Coordinate(float x, float y);
+
+	void draw(sf::RenderWindow* window);
 
 };
 
