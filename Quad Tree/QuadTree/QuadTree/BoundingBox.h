@@ -12,6 +12,8 @@ public:
 
 	BoundingBox(float x, float y, float halfDimension);
 
+	void setPosition(float x, float y);
+
 	bool containsPoint(Coordinate point);
 	bool intersects(BoundingBox boundingBox);
 

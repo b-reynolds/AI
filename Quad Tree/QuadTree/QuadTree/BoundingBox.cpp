@@ -7,6 +7,12 @@ BoundingBox::BoundingBox(float x, float y, float halfDimension)
 	this->halfDimension = halfDimension;
 }
 
+void BoundingBox::setPosition(float x, float y)
+{
+	center.x = x;
+	center.y = y;
+}
+
 bool BoundingBox::containsPoint(Coordinate point)
 {
 	return (center.x - halfDimension <= point.x && center.x + halfDimension >= point.x) &&
