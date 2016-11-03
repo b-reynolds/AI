@@ -40,22 +40,22 @@ bool QuadTree::insert(Point point)
 
 	if (northWest->insert(point))
 	{
-		std::cout << "Inserting point NW..." << std::endl;
+		std::cout << "Inserted point NW..." << std::endl;
 		return true;
 	}
 	else if (northEast->insert(point))
 	{
-		std::cout << "Inserting point NE..." << std::endl;
+		std::cout << "Inserted point NE..." << std::endl;
 		return true;
 	}
 	else if (southWest->insert(point))
 	{
-		std::cout << "Inserting point SW..." << std::endl;
+		std::cout << "Inserted point SW..." << std::endl;
 		return true;
 	}
 	else if (southEast->insert(point))
 	{
-		std::cout << "Inserting point SE..." << std::endl;
+		std::cout << "Inserted point SE..." << std::endl;
 		return true;
 	}
 
@@ -64,14 +64,14 @@ bool QuadTree::insert(Point point)
 
 void QuadTree::subdivide()
 {
-	northWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension,
-		boundary.center.y - boundary.halfDimension, boundary.halfDimension));
-	northEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension,
-		boundary.center.y - boundary.halfDimension, boundary.halfDimension));
-	southWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension,
-		boundary.center.y + boundary.halfDimension, boundary.halfDimension));
-	southEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension,
-		boundary.center.y + boundary.halfDimension, boundary.halfDimension));
+	northWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension / 2,
+		boundary.center.y - boundary.halfDimension / 2, boundary.halfDimension / 2));
+	northEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension / 2,
+		boundary.center.y - boundary.halfDimension / 2, boundary.halfDimension / 2));
+	southWest = new QuadTree(BoundingBox(boundary.center.x - boundary.halfDimension / 2,
+		boundary.center.y + boundary.halfDimension / 2, boundary.halfDimension / 2));
+	southEast = new QuadTree(BoundingBox(boundary.center.x + boundary.halfDimension / 2,
+		boundary.center.y + boundary.halfDimension / 2, boundary.halfDimension / 2));
 	std::cout << "Subdivided..." << std::endl;
 }
 

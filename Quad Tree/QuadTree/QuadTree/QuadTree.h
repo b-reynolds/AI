@@ -7,7 +7,7 @@ class QuadTree
 
 public:
 
-	const int NODE_CAPACITY = 4;
+	const int NODE_CAPACITY = 1;
 
 	BoundingBox boundary;
 
