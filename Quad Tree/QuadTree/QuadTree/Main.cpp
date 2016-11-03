@@ -4,11 +4,29 @@
 
 int main()
 {
+	const unsigned int RESY = sf::VideoMode::getDesktopMode().height;
+	unsigned int winSize = 0;
 
-	sf::RenderWindow window(sf::VideoMode(640, 640), "Quad Tree");
+	std::cout << "==========================================" << std::endl;
+	std::cout << "       SFML Quadtree Implementation       " << std::endl;
+	std::cout << "==========================================" << std::endl;
+	std::cout << "(Left Click) Add new point" << std::endl;
+	std::cout << "(C) Clear Quadtree" << std::endl;
+	std::cout << "(ESC) Exit" << std::endl;
+	std::cout << "==========================================" << std::endl;
+	printf("Size (Max: %i):", RESY);
+	std::cin >> winSize;
+	std::cout << "==========================================" << std::endl;
 
-	QuadTree quadTree(BoundingBox(window.getSize().x / 2, window.getSize().y / 2, window.getSize().x / 2));
+	if (winSize > RESY || winSize <= 0)
+	{
+		winSize = RESY;
+	}
 
+	sf::RenderWindow window(sf::VideoMode(winSize, winSize), "Quad Tree");
+
+	QuadTree* quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2));
+	
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -18,18 +36,27 @@ int main()
 			{
 				window.close();
 			}
-			else if (event.type == sf::Event::MouseButtonPressed)
-			{
-				std::cout << "MOUSE PRESSED.. inserting point.." << std::endl;
-				quadTree.insert(Point(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
-			}
+		}
+
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			quadTree->insert(Point(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+		{
+			delete quadTree;
+			quadTree = new QuadTree(BoundingBox(winSize / 2, winSize / 2, winSize / 2));
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+		{
+			window.close();
 		}
 
 		window.clear();
 
-		quadTree.draw(&window);
+		quadTree->draw(&window);
 
-		for (auto& point : quadTree.queryRange(quadTree.boundary))
+		for (auto& point : quadTree->queryRange(quadTree->boundary))
 		{
 			point.draw(&window);
 		}
