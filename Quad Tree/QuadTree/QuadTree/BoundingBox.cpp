@@ -39,5 +39,7 @@ void BoundingBox::draw(sf::RenderWindow * window)
 	sf::RectangleShape shape;
 	shape.setPosition(sf::Vector2f(center.x - halfDimension, center.y - halfDimension));
 	shape.setSize(sf::Vector2f(halfDimension * 2, halfDimension * 2));
+	shape.setFillColor(sf::Color::Transparent);
+	shape.setOutlineThickness(-1);
 	window->draw(shape);
 }
