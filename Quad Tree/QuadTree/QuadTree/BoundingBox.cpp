@@ -1,5 +1,12 @@
 #include "BoundingBox.h"
 
+BoundingBox::BoundingBox()
+{
+	center.x = 0;
+	center.y = 0;
+	halfDimension = 0;
+}
+
 BoundingBox::BoundingBox(float x, float y, float halfDimension)
 {
 	center.x = x;

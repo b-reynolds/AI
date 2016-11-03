@@ -10,6 +10,7 @@ public:
 	Coordinate center;
 	float halfDimension;
 
+	BoundingBox();
 	BoundingBox(float x, float y, float halfDimension);
 
 	void setPosition(float x, float y);
