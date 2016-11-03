@@ -21,7 +21,7 @@ int main()
 			else if (event.type == sf::Event::MouseButtonPressed)
 			{
 				std::cout << "MOUSE PRESSED.. inserting point.." << std::endl;
-				quadTree.insert(Coordinate(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
+				quadTree.insert(Point(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y));
 			}
 		}
 

@@ -17,9 +17,9 @@ QuadTree::~QuadTree()
 	delete southEast;
 }
 
-bool QuadTree::insert(Coordinate coordinate)
+bool QuadTree::insert(Point point)
 {
-	if (!boundary.containsPoint(coordinate))
+	if (!boundary.containsPoint(point))
 	{
 		std::cout << "Boundary does not contain point..." << std::endl;
 		return false;
@@ -28,7 +28,7 @@ bool QuadTree::insert(Coordinate coordinate)
 	if (points.size() < NODE_CAPACITY)
 	{
 		std::cout << "Inserting point (" << (points.size() + 1) << "/" << NODE_CAPACITY << ")..." << std::endl;
-		points.push_back(coordinate);
+		points.push_back(point);
 		return true;
 	}
 
@@ -38,22 +38,22 @@ bool QuadTree::insert(Coordinate coordinate)
 		subdivide();
 	}
 
-	if (northWest->insert(coordinate))
+	if (northWest->insert(point))
 	{
 		std::cout << "Inserting point NW..." << std::endl;
 		return true;
 	}
-	else if (northEast->insert(coordinate))
+	else if (northEast->insert(point))
 	{
 		std::cout << "Inserting point NE..." << std::endl;
 		return true;
 	}
-	else if (southWest->insert(coordinate))
+	else if (southWest->insert(point))
 	{
 		std::cout << "Inserting point SW..." << std::endl;
 		return true;
 	}
-	else if (southEast->insert(coordinate))
+	else if (southEast->insert(point))
 	{
 		std::cout << "Inserting point SE..." << std::endl;
 		return true;
@@ -75,9 +75,9 @@ void QuadTree::subdivide()
 	std::cout << "Subdivided..." << std::endl;
 }
 
-std::vector<Coordinate> QuadTree::queryRange(BoundingBox range)
+std::vector<Point> QuadTree::queryRange(BoundingBox range)
 {
-	std::vector<Coordinate> pointsInRange;
+	std::vector<Point> pointsInRange;
 
 	if (!boundary.intersects(range))
 	{

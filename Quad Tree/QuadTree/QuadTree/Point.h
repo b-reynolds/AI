@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Coordinate
+class Point
 {
 
 public:
@@ -9,8 +9,8 @@ public:
 	float x;
 	float y;
 
-	Coordinate();
-	Coordinate(float x, float y);
+	Point();
+	Point(float x, float y);
 
 	void draw(sf::RenderWindow* window);
 

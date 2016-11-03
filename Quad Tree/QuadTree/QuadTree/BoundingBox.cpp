@@ -20,7 +20,7 @@ void BoundingBox::setPosition(float x, float y)
 	center.y = y;
 }
 
-bool BoundingBox::containsPoint(Coordinate point)
+bool BoundingBox::containsPoint(Point point)
 {
 	return (center.x - halfDimension <= point.x && center.x + halfDimension >= point.x) &&
 		(center.y - halfDimension <= point.y && center.y + halfDimension >= point.y);

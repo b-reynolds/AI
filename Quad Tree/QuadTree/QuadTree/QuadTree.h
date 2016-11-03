@@ -11,7 +11,7 @@ public:
 
 	BoundingBox boundary;
 
-	std::vector<Coordinate> points;
+	std::vector<Point> points;
 
 	QuadTree* northWest;
 	QuadTree* northEast;
@@ -21,9 +21,9 @@ public:
 	QuadTree(BoundingBox boundary);
 	~QuadTree();
 
-	bool insert(Coordinate coordinate);
+	bool insert(Point Point);
 	void subdivide();
-	std::vector<Coordinate> queryRange(BoundingBox range);
+	std::vector<Point> queryRange(BoundingBox range);
 
 	void draw(sf::RenderWindow *window);
 

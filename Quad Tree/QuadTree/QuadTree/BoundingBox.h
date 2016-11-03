@@ -1,5 +1,5 @@
 #pragma once
-#include "Coordinate.h"
+#include "Point.h"
 #include <SFML/Graphics.hpp>
 
 class BoundingBox
@@ -7,7 +7,7 @@ class BoundingBox
 
 public:
 
-	Coordinate center;
+	Point center;
 	float halfDimension;
 
 	BoundingBox();
@@ -15,7 +15,7 @@ public:
 
 	void setPosition(float x, float y);
 
-	bool containsPoint(Coordinate point);
+	bool containsPoint(Point point);
 	bool intersects(BoundingBox boundingBox);
 
 	void draw(sf::RenderWindow* window);
