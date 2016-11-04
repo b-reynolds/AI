@@ -4,6 +4,8 @@
 class QuadTree
 {
 
+private:
+
 	QuadTree* northWest;
 	QuadTree* northEast;
 	QuadTree* southWest;
