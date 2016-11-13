@@ -18,7 +18,7 @@ void Map::print()
 					printf(" # ");
 					break;
 				case 1:
-					printf(" O ");
+					printf(" . ");
 					break;
 				case 2:
 					printf(" X ");
@@ -49,7 +49,7 @@ void Map::setMap(std::vector<std::vector<int>> map)
 
 void Map::setValue(Point position, int value)
 {
-	map[position.x][position.y] = value;
+	map[position.y][position.x] = value;
 }
 
 int Map::getValue(Point position)

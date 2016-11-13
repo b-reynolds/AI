@@ -20,14 +20,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6263cdd2-5b2b-471a-8fe5-d28f618011e8}</ProjectGuid>
-    <RootNamespace>PathFinding</RootNamespace>
+    <ProjectGuid>{3bf8501b-2d32-41f6-9ca1-2ebcda477996}</ProjectGuid>
+    <RootNamespace>AStarSFML</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

@@ -5,7 +5,7 @@
 #include <stack>
 #include <math.h>
 
-const Point mapSize(5, 5);
+const Point mapSize(10, 10);
 
 bool isOnList(Node node, std::deque<Node> list)
 {
@@ -177,19 +177,23 @@ std::stack<Point> findPath(Map* map, Point start, Point goal)
 int main()
 {
 
-
 	Map map(mapSize);
 
 	map.setMap(std::vector<std::vector<int>> {
-		{ 1, 0, 1, 1, 1 },
-		{ 1, 0, 1, 0, 1 },
-		{ 1, 0, 1, 0, 1 },
-		{ 1, 0, 1, 0, 1 },
-		{ 1, 1, 1, 0, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 0, 1, 1, 1, 1, 1, 1, 1, 1 },
+		{ 1, 0, 1, 0, 0, 0, 0, 0, 1, 1 },
+		{ 1, 0, 1, 0, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 1, 0, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 1, 0, 1, 1, 1, 1, 1, 1 },
+		{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
+		{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
+		{ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1 },
 	});
 
 	Point start(0, 0);
-	Point end(4, 4);
+	Point end(9, 9);
 
 	map.setValue(start, 3);
 	map.setValue(end, 4);
@@ -208,8 +212,6 @@ int main()
 	printf("\n");
 
 	map.print();
-
-
 
 	getchar();
 
