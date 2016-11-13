@@ -142,7 +142,7 @@ std::stack<sf::Vector2i> findPath(Map* map, sf::Vector2i start, sf::Vector2i goa
 						neighbour.setG(neighbour.getParent()->getG() + 10);
 					}
 					open.push_back(neighbour);
-					map->setValue(neighbour.getPosition(), 4);
+					map->setValue(neighbour.getPosition(), map->TILE_VISITED);
 				}
 				else
 				{
@@ -182,47 +182,19 @@ int main()
 
 	map.setMap(std::vector<std::vector<int>> {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 0, 2, 1, 1, 1, 1, 1, 1, 1, 0 },
+		{ 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 		{ 0, 1, 1, 1, 0, 1, 1, 1, 1, 0 },
 		{ 0, 1, 0, 1, 0, 1, 1, 1, 1, 0 },
 		{ 0, 1, 0, 1, 0, 1, 0, 1, 1, 0 },
 		{ 0, 1, 0, 1, 0, 1, 0, 1, 1, 0 },
 		{ 0, 1, 0, 1, 0, 1, 1, 1, 1, 0 },
 		{ 0, 1, 1, 1, 0, 1, 1, 1, 1, 0 },
-		{ 0, 1, 1, 1, 1, 1, 1, 1, 3, 0 },
+		{ 0, 1, 1, 1, 1, 1, 1, 1, 1, 0 },
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	});
 	
-	sf::Vector2i startPosition(0, 0);
-	sf::Vector2i destination(0, 0);
-
-	for (int x = 0; x < TILES_X; ++x)
-	{
-		for (int y = 0; y < TILES_Y; ++y)
-		{
-			if (map.getValue(sf::Vector2i(x, y)) == 2)
-			{
-				startPosition = sf::Vector2i(x, y);
-			}
-			else if (map.getValue(sf::Vector2i(x, y)) == 3)
-			{
-				destination = sf::Vector2i(x, y);
-			}
-		}
-	}
-
-	std::stack<sf::Vector2i> path = findPath(&map, startPosition, destination);
-
-	while (path.size() > 0)
-	{
-		sf::Vector2i point = path.top();
-		map.setValue(point, 2);
-		path.pop();
-	}
-
-	map.setValue(startPosition, 3);
-	map.setValue(destination, 5);
-
+	sf::Vector2i startPosition(1, 1);
+	sf::Vector2i destination(2, 1);
 		
 	sf::RenderWindow window(sf::VideoMode(WIN_X, WIN_Y), "A* Path Finding", sf::Style::Close);
 
@@ -235,6 +207,45 @@ int main()
 			{
 				window.close();
 			}
+			if(event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+			{
+				sf::Vector2i mouseToArray = sf::Vector2i(sf::Mouse::getPosition(window).y / TILE_SIZE, sf::Mouse::getPosition(window).x / TILE_SIZE);
+				map.setValue(mouseToArray, map.getValue(mouseToArray) == map.TILE_SOLID ? map.TILE_EMPTY : map.TILE_SOLID);
+			}
+			if(event.type == sf::Event::KeyPressed)
+			{
+				sf::Vector2i mouseToArray = sf::Vector2i(sf::Mouse::getPosition(window).y / TILE_SIZE, sf::Mouse::getPosition(window).x / TILE_SIZE);
+				switch(event.key.code)
+				{
+					case sf::Keyboard::S:
+						map.setValue(startPosition, map.TILE_EMPTY);
+						map.setValue(mouseToArray, map.TILE_START);
+						startPosition = mouseToArray;
+						break;
+					case sf::Keyboard::E:
+						map.setValue(destination, map.TILE_EMPTY);
+						map.setValue(mouseToArray, map.TILE_END);
+						destination = mouseToArray;
+						break;
+					case sf::Keyboard::Space:
+						map.reset();
+						std::stack<sf::Vector2i> path = findPath(&map, startPosition, destination);
+						while (path.size() > 0)
+						{
+							sf::Vector2i point = path.top();
+							map.setValue(point, map.TILE_PATH);
+							path.pop();
+						}
+						map.setValue(startPosition, map.TILE_START);
+						map.setValue(destination, map.TILE_END);
+						break;
+				}
+			}
+		}
+
+		if(sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+
 		}
 
 		window.clear();

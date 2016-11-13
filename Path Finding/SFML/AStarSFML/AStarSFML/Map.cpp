@@ -18,28 +18,53 @@ void Map::draw(sf::RenderWindow* window)
 			shape.setSize(sf::Vector2f(tileSize, tileSize));
 			shape.setOutlineColor(sf::Color::Black);
 			shape.setOutlineThickness(-1);
-			switch(getValue(sf::Vector2i(x, y)))
+
+			int cellValue = getValue(sf::Vector2i(x, y));
+
+			if(cellValue == TILE_EMPTY)
 			{
-				case 0:
-					shape.setFillColor(sf::Color(5, 5, 5));
-					break;
-				case 1:
-					shape.setFillColor(sf::Color(75, 75, 75));
-					break;
-				case 2:
-					shape.setFillColor(sf::Color(200, 200, 200));
-					break;
-				case 3:
-					shape.setFillColor(sf::Color(0, 43, 11));;
-					break;
-				case 4:
-					shape.setFillColor(sf::Color(50, 50, 50));
-					break;
-				case 5:
-					shape.setFillColor(sf::Color(43, 0, 0));
-					break;
+				shape.setFillColor(sf::Color(96, 96, 96));
 			}
+			else if(cellValue == TILE_SOLID)
+			{
+				shape.setFillColor(sf::Color(34, 34, 34));
+			}
+			else if(cellValue == TILE_END)
+			{
+				shape.setFillColor(sf::Color(64, 0, 0));
+			}
+			else if(cellValue == TILE_START)
+			{
+				shape.setFillColor(sf::Color(0, 64, 0));
+			}
+			else if (cellValue == TILE_VISITED)
+			{
+				shape.setFillColor(sf::Color(221, 221, 221));
+			}
+			else if(cellValue == TILE_PATH)
+			{
+				shape.setFillColor(sf::Color(225, 185, 115));
+			}
+
 			window->draw(shape);
+		}
+	}
+}
+
+void Map::reset()
+{
+	for(int x = 0; x < size.x; ++x)
+	{
+		for(int y = 0; y < size.y; ++y)
+		{
+			if(map[x][y] == TILE_VISITED)
+			{
+				map[x][y] = TILE_EMPTY;
+			}
+			else if(map[x][y] == TILE_PATH)
+			{
+				map[x][y] = TILE_EMPTY;
+			}
 		}
 	}
 }
