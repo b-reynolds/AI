@@ -10,6 +10,8 @@ public:
 	Point();
 	Point(int x, int y);
 
+	bool operator== (Point point);
+
 	~Point();
 
 };

@@ -12,6 +12,11 @@ Point::Point(int x, int y)
 	this->y = y;
 }
 
+bool Point::operator==(Point point)
+{
+	return this->x == point.x && this->y == point.y;
+}
+
 Point::~Point()
 {
 }
