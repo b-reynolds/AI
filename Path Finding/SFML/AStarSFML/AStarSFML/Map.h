@@ -27,6 +27,8 @@ public:
 
 	void reset();
 
+	sf::Vector2i getSize() const;
+
 	void setMap(std::vector<std::vector<int>> map);
 	void setValue(sf::Vector2i position, int value);
 	int getValue(sf::Vector2i position);

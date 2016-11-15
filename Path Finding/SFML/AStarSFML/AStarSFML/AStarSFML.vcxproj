@@ -22,10 +22,12 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="PathFinder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Map.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="PathFinder.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3bf8501b-2d32-41f6-9ca1-2ebcda477996}</ProjectGuid>

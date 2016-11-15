@@ -69,6 +69,11 @@ void Map::reset()
 	}
 }
 
+sf::Vector2i Map::getSize() const
+{
+	return size;
+}
+
 void Map::setMap(std::vector<std::vector<int>> map)
 {
 	for (int x = 0; x < size.x; ++x)
