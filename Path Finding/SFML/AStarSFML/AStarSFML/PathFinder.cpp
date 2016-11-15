@@ -16,7 +16,7 @@ int PathFinder::getMovementCost(const sf::Vector2i &start, const sf::Vector2i &e
 	return start.x != end.x && start.y != end.y ? COST_DIAGONAL : COST_NONDIAGONAL;
 }
 
-std::vector<Node> PathFinder::getNeighbours(Node &node, Map &map)
+std::vector<Node> PathFinder::getNeighbours(const Node &node, Map &map)
 {
 	std::vector<Node> neighbours;
 
@@ -28,44 +28,44 @@ std::vector<Node> PathFinder::getNeighbours(Node &node, Map &map)
 	if (parentPos.y - 1 >= 0)
 	{
 		nodePos = sf::Vector2i(parentPos.x, parentPos.y - 1);
-		neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // North
+		neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // North
 		if (parentPos.x + 1 < mapSize.x)
 		{
 			nodePos = sf::Vector2i(parentPos.x + 1, parentPos.y - 1);
-			neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // North East
+			neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // North East
 		}
 		if (parentPos.x - 1 >= 0)
 		{
 			nodePos = sf::Vector2i(parentPos.x - 1, parentPos.y - 1);
-			neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // North West
+			neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // North West
 		}
 	}
 
 	if (parentPos.x + 1 < mapSize.x)
 	{
 		nodePos = sf::Vector2i(parentPos.x + 1, parentPos.y);
-		neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // East
+		neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // East
 	}
 
 	if (parentPos.x - 1 >= 0)
 	{
 		nodePos = sf::Vector2i(parentPos.x - 1, parentPos.y);
-		neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // West
+		neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // West
 	}
 
 	if (parentPos.y + 1 < mapSize.y)
 	{
 		nodePos = sf::Vector2i(parentPos.x, parentPos.y + 1);
-		neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // South
+		neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // South
 		if (parentPos.x + 1 < mapSize.x)
 		{
 			nodePos = sf::Vector2i(parentPos.x + 1, parentPos.y + 1);
-			neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // South East
+			neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // South East
 		}
 		if (parentPos.x - 1 >= 0)
 		{
 			nodePos = sf::Vector2i(parentPos.x - 1, parentPos.y + 1);
-			neighbours.push_back(Node(nodePos, map.getValue(nodePos), &node)); // South West
+			neighbours.push_back(Node(nodePos, map.getValue(nodePos), nullptr)); // South West
 		}
 	}
 
@@ -119,13 +119,18 @@ std::stack<sf::Vector2i> PathFinder::findPath(Map &map, const sf::Vector2i &star
 
 			if(isOnList(neighbour, openList))
 			{
-				
+				float newG = currentNode->getG() + getMovementCost(currentNode->getPosition(), neighbour.getPosition());
+				if (newG < neighbour.getG())
+				{
+					neighbour.setG(newG);
+					neighbour.setParent(currentNode);
+				}
 			}
 			else
 			{
 				neighbour.setParent(currentNode);
-				neighbour.setH(getManhattanDistance(neighbour.getPosition(), end));
-				neighbour.setG(neighbour.getG() + getMovementCost(currentNode->getPosition(), neighbour.getPosition()));
+				neighbour.setH(getManhattanDistance(neighbour.getPosition(), end)* 10);
+				neighbour.setG(currentNode->getG() + getMovementCost(currentNode->getPosition(), neighbour.getPosition()));
 				openList.push_front(neighbour);
 				map.setValue(neighbour.getPosition(), map.TILE_VISITED);
 			}		

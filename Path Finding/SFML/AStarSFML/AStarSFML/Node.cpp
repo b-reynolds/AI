@@ -8,13 +8,11 @@ void Node::setParent(Node* pParent)
 void Node::setH(int h)
 {
 	this->h = h;
-	f = h + g;
 }
 
 void Node::setG(int g)
 {
 	this->g = g;
-	f = h + g;
 }
 
 sf::Vector2i Node::getPosition() const
@@ -39,7 +37,7 @@ int Node::getG() const
 
 int Node::getF() const
 {
-	return f;
+	return h + g;
 }
 
 bool Node::isTraversable() const

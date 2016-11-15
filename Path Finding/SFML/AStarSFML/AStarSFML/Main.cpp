@@ -5,7 +5,7 @@
 #include "Node.h"
 #include "PathFinder.h"
 
-const int TILE_SIZE = 32;
+const int TILE_SIZE = 24;
 const int TILES_X = 40;
 const int TILES_Y = 40;
 
