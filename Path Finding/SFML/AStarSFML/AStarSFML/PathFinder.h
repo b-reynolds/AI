@@ -25,6 +25,7 @@ private:
 	int getManhattanDistance(const sf::Vector2i &start, const sf::Vector2i &end) const;
 	int getMovementCost(const sf::Vector2i &start, const sf::Vector2i &end) const;
 	std::vector<Node> getNeighbours(const Node &node, Map &map);
+
 	bool isOnList(const Node &node, const std::deque<Node>& list);
 
 public:

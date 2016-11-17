@@ -26,6 +26,7 @@ public:
 	void draw(sf::RenderWindow* window);
 
 	void reset();
+	void clear();
 
 	sf::Vector2i getSize() const;
 

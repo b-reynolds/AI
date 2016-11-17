@@ -8,7 +8,7 @@ void PathFinder::sortByLowestF(std::deque<Node>& deque) const
 
 int PathFinder::getManhattanDistance(const sf::Vector2i& start, const sf::Vector2i& end) const
 {
-	return abs(end.x - start.x) + abs(end.y - start.y);
+	return (abs(end.x - start.x) + abs(end.y - start.y)) * 10;
 }
 
 int PathFinder::getMovementCost(const sf::Vector2i &start, const sf::Vector2i &end) const
@@ -129,7 +129,7 @@ std::stack<sf::Vector2i> PathFinder::findPath(Map &map, const sf::Vector2i &star
 			else
 			{
 				neighbour.setParent(currentNode);
-				neighbour.setH(getManhattanDistance(neighbour.getPosition(), end)* 10);
+				neighbour.setH(getManhattanDistance(neighbour.getPosition(), end));
 				neighbour.setG(currentNode->getG() + getMovementCost(currentNode->getPosition(), neighbour.getPosition()));
 				openList.push_front(neighbour);
 				map.setValue(neighbour.getPosition(), map.TILE_VISITED);
