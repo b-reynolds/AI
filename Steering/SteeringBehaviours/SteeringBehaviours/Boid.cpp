@@ -25,14 +25,11 @@ Boid::Boid(const sf::Vector2f& startPosition)
 
 void Boid::update(sf::RenderWindow& window, const float& deltaTime)
 {
-	if(getPosition().x + sprBoid.getGlobalBounds().width / 2 <= 0 ||
-		getPosition().x - sprBoid.getGlobalBounds().width / 2 >= WIN_X ||
-			getPosition().y + sprBoid.getGlobalBounds().height / 2 <= 0 ||
-				getPosition().y - sprBoid.getGlobalBounds().width / 2 >= WIN_Y)
+	if(!intersects(sf::FloatRect(0, BORDER_Y, WIN_X, WIN_Y - BORDER_Y)))
 	{
 		setPosition(startPosition);
 	}
-
+	sf::FloatRect area;
 
 	switch(currentBehaviour)
 	{
@@ -46,10 +43,10 @@ void Boid::update(sf::RenderWindow& window, const float& deltaTime)
 			arrive((sf::Vector2f)sf::Mouse::getPosition(window));
 			break;	
 		case WANDER:
-			wander(sf::FloatRect(0, 0, (float)WIN_X, (float)WIN_Y));
+			wander(sf::FloatRect(0, BORDER_Y + sprBoid.getLocalBounds().height / 2, (float)WIN_X, WIN_Y - BORDER_Y * 2.0f - sprBoid.getLocalBounds().height));
 			break;
 		case WANDER2:
-			wander2(sf::FloatRect(0, 0, (float)WIN_X, (float)WIN_Y));
+			wander2(sf::FloatRect(0, BORDER_Y + sprBoid.getLocalBounds().height / 2, (float)WIN_X, WIN_Y - BORDER_Y * 2.0f - sprBoid.getLocalBounds().height));
 			break;
 		default:
 			break;
@@ -155,6 +152,13 @@ std::string Boid::getBehaviourName() const
 		default:
 			return "N/A";
 	}
+}
+
+bool Boid::intersects(const sf::FloatRect& rect) const
+{
+	sf::FloatRect rectBoid = sprBoid.getGlobalBounds();
+	return (rectBoid.left < rect.left + rect.width && rectBoid.left + rectBoid.width > rect.left &&
+		rectBoid.top < rect.top + rect.height && rectBoid.top + rectBoid.height > rect.top);
 }
 
 void Boid::rotate(const sf::Vector2f& direction)

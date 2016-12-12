@@ -29,8 +29,8 @@ private:
 	const int BEHAVIOUR_COUNT = 3;
 	const float CIRCLE_DISTANCE = 100.0f;
 	const float CIRCLE_RADIUS = 50.0f;
-	const float MAX_SPEED = 150.0f;
-	const float MAX_FORCE = 0.125f;
+	const float MAX_SPEED = 300.0f;
+	const float MAX_FORCE = 0.5f;
 	const float WANDER_TOLERANCE = 10.0f;
 	const sf::Int32 WANDER_TIMER = 1500;
 
@@ -49,6 +49,8 @@ private:
 
 	sf::Vector2f circleCenter;
 	
+	bool intersects(const sf::FloatRect &rect) const;
+
 	void rotate(const sf::Vector2f &direction);
 	void addForce(const sf::Vector2f &force);
 	void seek(const sf::Vector2f &target);
@@ -56,7 +58,6 @@ private:
 	void arrive(const sf::Vector2f &target);
 	void wander(const sf::FloatRect &area);
 	void wander2(const sf::FloatRect &area);
-
 	void move(const sf::Vector2f &velocity);
 
 	void setPosition(const sf::Vector2f &position);
