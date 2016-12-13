@@ -27,7 +27,7 @@ private:
 
 	const std::string TEXTURE_PATH = "Boid.png";
 	const int BEHAVIOUR_COUNT = 3;
-	const float CIRCLE_DISTANCE = 100.0f;
+	const float CIRCLE_DISTANCE = 200.0f;
 	const float CIRCLE_RADIUS = 100.0f;
 	const float MAX_SPEED = 150.0f;
 	const float MAX_FORCE = 0.1f;
