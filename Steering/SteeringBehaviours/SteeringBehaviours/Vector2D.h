@@ -8,7 +8,7 @@ public:
 
 	static sf::Vector2f normalize(const sf::Vector2f &vector);
 	static sf::Vector2f limit(const sf::Vector2f &vector, const float &maxLength);
-	static sf::Vector2f rotate(const sf::Vector2f &vector, const float &degrees);
+	static sf::Vector2f rotate(const sf::Vector2f &vector, const float &degrees, const float &radius);
 	static float magnitude(const sf::Vector2f &vector);
 	static float map(const float &value, const float &aStart, const float &aStop, const float &bStart, const float &bStop);
 	static float distance(const sf::Vector2f &v1, const sf::Vector2f &v2);

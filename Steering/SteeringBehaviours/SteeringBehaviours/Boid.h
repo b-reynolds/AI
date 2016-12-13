@@ -28,11 +28,12 @@ private:
 	const std::string TEXTURE_PATH = "Boid.png";
 	const int BEHAVIOUR_COUNT = 3;
 	const float CIRCLE_DISTANCE = 100.0f;
-	const float CIRCLE_RADIUS = 50.0f;
-	const float MAX_SPEED = 300.0f;
-	const float MAX_FORCE = 0.5f;
+	const float CIRCLE_RADIUS = 100.0f;
+	const float MAX_SPEED = 150.0f;
+	const float MAX_FORCE = 0.1f;
 	const float WANDER_TOLERANCE = 10.0f;
 	const sf::Int32 WANDER_TIMER = 1500;
+	const float ANGLE_CHANGE = 0.15f;
 
 	Behaviour currentBehaviour;
 
@@ -46,6 +47,7 @@ private:
 
 	Timer wanderTimer = Timer(WANDER_TIMER);
 	sf::Vector2f wanderTarget;
+	float wanderAngle;
 
 	sf::Vector2f circleCenter;
 	

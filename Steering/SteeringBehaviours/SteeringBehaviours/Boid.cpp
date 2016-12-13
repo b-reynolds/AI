@@ -104,6 +104,7 @@ void Boid::nextBehaviour()
 	else if(currentBehaviour == WANDER)
 	{
 		currentBehaviour = WANDER2;
+		wanderAngle = 0.0f;
 	}
 	else
 	{
@@ -222,16 +223,13 @@ void Boid::wander(const sf::FloatRect& area)
 void Boid::wander2(const sf::FloatRect& area)
 {
 	circleCenter = getPosition() + Vector2D::normalize(velocity) * CIRCLE_DISTANCE;
-	wanderTarget = circleCenter + sf::Vector2f(CIRCLE_RADIUS, CIRCLE_RADIUS);
-	//wanderTarget = Vector2D::rotate(wanderTarget, (float)RandomUtil::getRandomInt(0, 360));
-
-	float angle = RandomUtil::nextDouble() * (float)(M_PI * 2.0);
-	float radius = sqrt(RandomUtil::nextDouble()) * CIRCLE_RADIUS;
-	float x = circleCenter.x + radius * cos(angle);
-	float y = circleCenter.y + radius * sin(angle);
-
-	wanderTarget = sf::Vector2f(x, y);
-
+	sf::Vector2f displacement = sf::Vector2f(0, -1);
+	displacement *= CIRCLE_RADIUS;
+	float len = Vector2D::magnitude(displacement);
+	displacement.x = cos(wanderAngle) * len;
+	displacement.y = sin(wanderAngle) * len;
+	wanderAngle += RandomUtil::nextDouble() * ANGLE_CHANGE - ANGLE_CHANGE * 0.5f;
+	wanderTarget = circleCenter + displacement;
 	seek(wanderTarget);
 }
 

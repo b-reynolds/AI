@@ -20,12 +20,13 @@ sf::Vector2f Vector2D::limit(const sf::Vector2f& vector, const float& maxLength)
 	return sf::Vector2f(0, 0);
 }
 
-sf::Vector2f Vector2D::rotate(const sf::Vector2f& vector, const float& degrees)
+sf::Vector2f Vector2D::rotate(const sf::Vector2f& vector, const float& degrees, const float &radius)
 {
 	float radians = degrees * (float)(M_PI / 180);
 	float cosAngle = cos(radians);
 	float sinAngle = sin(radians);
-	return sf::Vector2f(vector.x * cosAngle -vector.y * sinAngle, vector.x * sinAngle + vector.y * cosAngle);
+	return sf::Vector2f(cosAngle * radius, sinAngle * radius);
+	//return sf::Vector2f(vector.x * cosAngle -vector.y * sinAngle, vector.x * sinAngle + vector.y * cosAngle);
 }
 
 float Vector2D::magnitude(const sf::Vector2f& vector)
