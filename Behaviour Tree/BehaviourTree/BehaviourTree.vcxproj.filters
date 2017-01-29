@@ -5,18 +5,58 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Behaviour Tree">
+      <UniqueIdentifier>{72a32205-d8be-4e62-8e6a-f89c2801beff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Behaviour Tree\Nodes">
+      <UniqueIdentifier>{e7e53ee3-14c3-4ab5-bc51-f0ff891d4d1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CompositeNode.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="DecoratorNode.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Inverter.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Selector.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Sequence.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CompositeNode.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="DecoratorNode.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sequence.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Selector.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Inverter.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
