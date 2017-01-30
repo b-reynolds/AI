@@ -54,6 +54,7 @@ void Blackboard::remove(const char* name)
 	{
 		if(iterator->first == name)
 		{
+			delete iterator->second;
 			iterator = map.erase(iterator);
 		}
 		else
@@ -112,4 +113,17 @@ bool Blackboard::get(const char* name, std::string &out)
 		return true;
 	}
 	return false;
+}
+
+/**
+ * @brief Output the contents of the blackboard to the console
+ * @return void
+ */
+void Blackboard::dump()
+{
+	int count = 0;
+	for(auto &item : map)
+	{
+		printf("[%d] \"%s\" (%p)\n", count++, item.first, item.second);
+	}
 }

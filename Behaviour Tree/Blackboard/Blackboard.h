@@ -18,6 +18,8 @@ public:
 	bool get(const char* name, float &out);
 	bool get(const char* name, std::string &out);
 
+	void dump();
+
 private:
 
 	std::map<const char*, BlackboardType*> map;
