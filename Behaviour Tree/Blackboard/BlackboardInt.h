@@ -10,6 +10,7 @@ public:
 	~BlackboardInt() {}
 
 	int getValue() const { return value; }
+	void setValue(const int &value) { this->value = value; }
 
 private:
 	

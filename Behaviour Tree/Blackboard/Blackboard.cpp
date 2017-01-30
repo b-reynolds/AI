@@ -2,6 +2,8 @@
 #include "BlackboardInt.h"
 #include "BlackboardFloat.h"
 #include "BlackboardString.h"
+#include "BlackboardDouble.h"
+#include "BlackboardChar.h"
 
 /** Destructor
  * @brief Free allocated memory 
@@ -31,7 +33,8 @@ void Blackboard::insert(const char* name, BlackboardType* item)
  * @param item The item to store
  * @return bool
  */
-bool Blackboard::update(const char* name, BlackboardType* item)
+[[deprecated]] // TODO: Remove/Revamp (Dangling pointer potential)
+bool Blackboard::update(const char* name, BlackboardType* item) 
 {
 	auto result = map.find(name);
 	if(result != map.end())
@@ -68,10 +71,10 @@ void Blackboard::remove(const char* name)
 /**
  * @brief Search for and retrieve an int from the blackboard
  * @param name The key to search the blackboard for
- * @param out The variable to store the value in if found
+ * @param out The output variable to store the value in
  * @return bool
  */
-bool Blackboard::get(const char* name, int &out)
+bool Blackboard::getValue(const char* name, int &out)
 {
 	auto result = map.find(name);
 	if(result != map.end())
@@ -85,10 +88,10 @@ bool Blackboard::get(const char* name, int &out)
 /**
 * @brief Search for and retrieve a float from the blackboard
 * @param name The key to search the blackboard for
-* @param out The variable to store the value in if found
+* @param out The output variable to store the value in
 * @return bool
 */
-bool Blackboard::get(const char* name, float &out)
+bool Blackboard::getValue(const char* name, float &out)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -100,12 +103,46 @@ bool Blackboard::get(const char* name, float &out)
 }
 
 /**
-* @brief Search for and retrieve a string from the blackboard
+* @brief Search for and retrieve a double from the blackboard
 * @param name The key to search the blackboard for
-* @param out The variable to store the value in if found
+* @param out The output variable to store the value in
 * @return bool
 */
-bool Blackboard::get(const char* name, std::string &out)
+bool Blackboard::getValue(const char* name, double &out)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		out = reinterpret_cast<BlackboardDouble*>(result->second)->getValue();
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and retrieve a char from the blackboard
+* @param name The key to search the blackboard for
+* @param out The output variable to store the value in
+* @return bool
+*/
+bool Blackboard::getValue(const char* name, char &out)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		out = reinterpret_cast<BlackboardChar*>(result->second)->getValue();
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and retrieve a string from the blackboard
+* @param name The key to search the blackboard for
+* @param out The output variable to store the value in
+* @return bool
+*/
+bool Blackboard::getValue(const char* name, std::string &out)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -114,6 +151,21 @@ bool Blackboard::get(const char* name, std::string &out)
 		return true;
 	}
 	return false;
+}
+
+/**
+ * @brief Search for and returns a pointer to an item in the blackboard
+ * @param name The key to search the blackboard for
+ * @return BlackboardType*
+ */
+BlackboardType* Blackboard::getPointer(const char* name)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		return result->second;
+	}
+	return nullptr;
 }
 
 /**

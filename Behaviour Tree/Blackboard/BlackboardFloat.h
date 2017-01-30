@@ -10,6 +10,7 @@ public:
 	~BlackboardFloat() {}
 
 	float getValue() const { return value; }
+	void setValue(const float &value) { this->value = value; }
 
 private:
 

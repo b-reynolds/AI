@@ -11,6 +11,7 @@ public:
 	~BlackboardString() {}
 
 	std::string getValue() const { return value; }
+	void setValue(const std::string &value) { this->value = value; }
 
 private:
 

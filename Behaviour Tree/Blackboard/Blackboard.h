@@ -14,9 +14,13 @@ public:
 	bool update(const char* name, BlackboardType* item);	
 	void remove(const char* name);
 
-	bool get(const char* name, int &out);
-	bool get(const char* name, float &out);
-	bool get(const char* name, std::string &out);
+	bool getValue(const char* name, int &out);
+	bool getValue(const char* name, float &out);
+	bool getValue(const char* name, double &out);
+	bool getValue(const char* name, char &out);
+	bool getValue(const char* name, std::string &out);
+
+	BlackboardType* getPointer(const char* name);
 
 	void dump();
 
