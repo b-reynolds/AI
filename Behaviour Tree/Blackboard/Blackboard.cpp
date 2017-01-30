@@ -36,6 +36,7 @@ bool Blackboard::update(const char* name, BlackboardType* item)
 	auto result = map.find(name);
 	if(result != map.end())
 	{
+		delete result->second;
 		result->second = item;
 		return true;
 	}
