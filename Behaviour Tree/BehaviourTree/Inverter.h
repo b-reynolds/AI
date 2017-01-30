@@ -6,7 +6,7 @@ class Inverter : public DecoratorNode
 
 private:
 
-	bool run() override;
+	Status tick() override;
 
 };
 

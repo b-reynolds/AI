@@ -9,7 +9,7 @@ class Sequence : public CompositeNode
 
 public:
 
-	bool run() override;
+	Status tick() override;
 
 };
 

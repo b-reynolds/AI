@@ -3,14 +3,14 @@
 /**
 * Run each child in prioritive order, return false upon failure, true if all succeed.
 */
-bool Sequence::run()
+Node::Status Sequence::tick()
 {
 	for(Node* child : getChildren())
 	{
-		if(!child->run())
+		if(child->tick() == FAILURE)
 		{
-			return false;
+			return FAILURE;
 		}
 	}
-	return true;
+	return SUCCESS;
 }

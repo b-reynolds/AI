@@ -41,12 +41,12 @@ private:
 class TargetIsAlive : public Node
 {
 public:
-	explicit TargetIsAlive(Assasin* assasin) { this->assasin = assasin; }
-	bool run() override
+	explicit TargetIsAlive(Assasin* assasin) : assasin(assasin) {}
+	Status tick() override
 	{
 		bool result = assasin->getTarget()->isAlive();
 		printf("Target is %s\n", result ? "alive" : "dead");
-		return result;
+		return result ? SUCCESS : FAILURE;
 	}
 private:
 	Assasin* assasin;
@@ -55,8 +55,8 @@ private:
 class PursueTarget : public Node
 {
 public:
-	explicit PursueTarget(Assasin* assasin) { this->assasin = assasin; }
-	bool run() override
+	explicit PursueTarget(Assasin* assasin) : assasin(assasin) {}
+	Status tick() override
 	{
 		Vector2 currentPos = assasin->getPosition();
 		Vector2 targetPos = assasin->getTarget()->getPosition();
@@ -65,7 +65,7 @@ public:
 		if(velocity.x != 0)	velocity.x = velocity.x >= 1 ? 1 : -1;
 		if(velocity.y != 0) velocity.y = velocity.y >= 1 ? 1 : -1;
 		assasin->move(velocity);
-		return assasin->getPosition() == assasin->getTarget()->getPosition();
+		return assasin->getPosition() == assasin->getTarget()->getPosition() ? SUCCESS : FAILURE;
 	}
 private:
 	Assasin* assasin;
@@ -74,12 +74,12 @@ private:
 class KillTarget : public Node
 {
 public:
-	explicit KillTarget(Assasin* assasin) { this->assasin = assasin; }
-	bool run() override
+	explicit KillTarget(Assasin* assasin) : assasin(assasin) {}
+	Status tick() override
 	{
 		assasin->getTarget()->die();
 		printf("Target killed!\n");
-		return !assasin->getTarget()->isAlive();
+		return !assasin->getTarget()->isAlive() ? SUCCESS : FAILURE;
 	}
 private:
 	Assasin* assasin;
@@ -87,7 +87,7 @@ private:
 
 int main()
 {
-	Player player(Vector2(25, -10));
+	Player player(Vector2(5, -5));
 	Assasin assasin(Vector2(0, 0), &player);
 
 	Sequence rootNode;
@@ -100,7 +100,7 @@ int main()
 	rootNode.addChild(&pursueTarget);
 	rootNode.addChild(&killTarget);
 
-	while (!rootNode.run()) {}
+	while (!(rootNode.tick() == Node::SUCCESS)) {}
 
 	printf("Finished.\n");
 	getchar();

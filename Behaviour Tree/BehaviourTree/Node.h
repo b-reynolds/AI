@@ -8,8 +8,10 @@ class Node
 
 public:
 
+	enum Status { ERROR, FAILURE, SUCCESS, RUNNING };
+
 	virtual ~Node() {}
-	virtual bool run() = 0;
+	virtual Status tick() = 0;
 
 };
 

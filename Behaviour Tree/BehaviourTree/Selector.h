@@ -9,7 +9,7 @@ class Selector : public CompositeNode
 
 public:
 	
-	bool run() override;
+	Status tick() override;
 
 };
 

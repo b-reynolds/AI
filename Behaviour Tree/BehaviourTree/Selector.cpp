@@ -3,14 +3,14 @@
 /**
 * Run each child in prioritive order, return true upon success, false if all fail.
 */
-bool Selector::run()
+Node::Status Selector::tick()
 {
 	for(Node* child : getChildren())
 	{
-		if(child->run())
+		if(child->tick() == SUCCESS)
 		{
-			return true;
+			return SUCCESS;
 		}
 	}
-	return false;
+	return FAILURE;
 }

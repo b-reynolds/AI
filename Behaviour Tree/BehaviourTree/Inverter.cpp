@@ -1,6 +1,6 @@
 #include "Inverter.h"
 
-bool Inverter::run()
+Node::Status Inverter::tick()
 {
-	return !getChild()->run();
+	return getChild()->tick() ? FAILURE : SUCCESS;
 }
