@@ -28,25 +28,6 @@ void Blackboard::insert(const char* name, BlackboardType* item)
 }
 
 /**
- * @brief Update an item in the blackboard
- * @param name The key/name of the item to update
- * @param item The item to store
- * @return bool
- */
-[[deprecated]] // TODO: Remove/Revamp (Dangling pointer potential)
-bool Blackboard::update(const char* name, BlackboardType* item) 
-{
-	auto result = map.find(name);
-	if(result != map.end())
-	{
-		delete result->second;
-		result->second = item;
-		return true;
-	}
-	return false;
-}
-
-/**
  * @brief Remove all items with the specified key from the blackboard
  * @param name The key/name of the item(s) to delete
  * @return void
@@ -148,6 +129,96 @@ bool Blackboard::getValue(const char* name, std::string &out)
 	if (result != map.end())
 	{
 		out = reinterpret_cast<BlackboardString*>(result->second)->getValue();
+		return true;
+	}
+	return false;
+}
+
+/**
+ * @brief Search for and set an int value from the blackboard
+ * @param name The key to search the blackboard for
+ * @param value The value to set
+ * @return bool
+ */
+bool Blackboard::setValue(const char* name, const int &value)
+{
+	auto result = map.find(name);
+	if(result != map.end())
+	{
+		auto item = reinterpret_cast<BlackboardInt*>(result->second);
+		item->setValue(value);
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and set a float value from the blackboard
+* @param name The key to search the blackboard for
+* @param value The value to set
+* @return bool
+*/
+bool Blackboard::setValue(const char* name, const float& value)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		auto item = reinterpret_cast<BlackboardFloat*>(result->second);
+		item->setValue(value);
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and set a double value from the blackboard
+* @param name The key to search the blackboard for
+* @param value The value to set
+* @return bool
+*/
+bool Blackboard::setValue(const char* name, const double& value)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		auto item = reinterpret_cast<BlackboardDouble*>(result->second);
+		item->setValue(value);
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and set a char value from the blackboard
+* @param name The key to search the blackboard for
+* @param value The value to set
+* @return bool
+*/
+bool Blackboard::setValue(const char* name, const char& value)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		auto item = reinterpret_cast<BlackboardChar*>(result->second);
+		item->setValue(value);
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and set a string value from the blackboard
+* @param name The key to search the blackboard for
+* @param value The value to set
+* @return bool
+*/
+bool Blackboard::setValue(const char* name, const std::string& value)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		auto item = reinterpret_cast<BlackboardString*>(result->second);
+		item->setValue(value);
 		return true;
 	}
 	return false;
