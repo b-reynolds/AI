@@ -10,22 +10,22 @@ public:
 
 	~Blackboard();
 
-	void insert(std::string &name, BlackboardType* item);
-	void remove(std::string &name);
+	void insert(const std::string &name, BlackboardType* item);
+	void remove(const std::string &name);
 
-	bool getValue(std::string &name, int &out);
-	bool getValue(std::string &name, float &out);
-	bool getValue(std::string &name, double &out);
-	bool getValue(std::string &name, char &out);
-	bool getValue(std::string &name, std::string &out);
+	bool getValue(const std::string &name, int &out);
+	bool getValue(const std::string &name, float &out);
+	bool getValue(const std::string &name, double &out);
+	bool getValue(const std::string &name, char &out);
+	bool getValue(const std::string &name, std::string &out);
 
-	bool setValue(std::string &name, const int &value);
-	bool setValue(std::string &name, const float &value);
-	bool setValue(std::string &name, const double &value);
-	bool setValue(std::string &name, const char &value);
-	bool setValue(std::string &name, const std::string &value);
+	bool setValue(const std::string &name, const int &value);
+	bool setValue(const std::string &name, const float &value);
+	bool setValue(const std::string &name, const double &value);
+	bool setValue(const std::string &name, const char &value);
+	bool setValue(const std::string &name, const std::string &value);
 
-	BlackboardType* getPointer(std::string &name);
+	BlackboardType* getPointer(const std::string &name);
 
 	void dump();
 
