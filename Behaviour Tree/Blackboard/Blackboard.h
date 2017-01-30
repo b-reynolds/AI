@@ -10,29 +10,27 @@ public:
 
 	~Blackboard();
 
-	void insert(const char* name, BlackboardType* item);
-	void remove(const char* name);
+	void insert(std::string &name, BlackboardType* item);
+	void remove(std::string &name);
 
-	bool getValue(const char* name, int &out);
-	bool getValue(const char* name, float &out);
-	bool getValue(const char* name, double &out);
-	bool getValue(const char* name, char &out);
-	bool getValue(const char* name, std::string &out);
+	bool getValue(std::string &name, int &out);
+	bool getValue(std::string &name, float &out);
+	bool getValue(std::string &name, double &out);
+	bool getValue(std::string &name, char &out);
+	bool getValue(std::string &name, std::string &out);
 
-	bool setValue(const char* name, const int &value);
-	bool setValue(const char* name, const float &value);
-	bool setValue(const char* name, const double &value);
-	bool setValue(const char* name, const char &value);
-	bool setValue(const char* name, const std::string &value);
+	bool setValue(std::string &name, const int &value);
+	bool setValue(std::string &name, const float &value);
+	bool setValue(std::string &name, const double &value);
+	bool setValue(std::string &name, const char &value);
+	bool setValue(std::string &name, const std::string &value);
 
-	// TODO:: Add setters! that reinterpet cast appropriately  
-
-	BlackboardType* getPointer(const char* name);
+	BlackboardType* getPointer(std::string &name);
 
 	void dump();
 
 private:
 
-	std::map<const char*, BlackboardType*> map;
+	std::map<std::string, BlackboardType*> map;
 
 };

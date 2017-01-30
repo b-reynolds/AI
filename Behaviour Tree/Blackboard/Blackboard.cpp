@@ -22,9 +22,9 @@ Blackboard::~Blackboard()
  * @param item The item to store
  * @return void
  */
-void Blackboard::insert(const char* name, BlackboardType* item)
+void Blackboard::insert(std::string &name, BlackboardType* item)
 {
-	map.insert(std::pair<const char*, BlackboardType*>(name, item));
+	map.insert(std::pair<std::string, BlackboardType*>(name, item));
 }
 
 /**
@@ -32,9 +32,9 @@ void Blackboard::insert(const char* name, BlackboardType* item)
  * @param name The key/name of the item(s) to delete
  * @return void
  */
-void Blackboard::remove(const char* name)
+void Blackboard::remove(std::string &name)
 {
-	std::map<const char*, BlackboardType*>::iterator iterator = map.begin();
+	std::map<std::string, BlackboardType*>::iterator iterator = map.begin();
 	while(iterator != map.end())
 	{
 		if(iterator->first == name)
@@ -55,7 +55,7 @@ void Blackboard::remove(const char* name)
  * @param out The output variable to store the value in
  * @return bool
  */
-bool Blackboard::getValue(const char* name, int &out)
+bool Blackboard::getValue(std::string &name, int &out)
 {
 	auto result = map.find(name);
 	if(result != map.end())
@@ -72,7 +72,7 @@ bool Blackboard::getValue(const char* name, int &out)
 * @param out The output variable to store the value in
 * @return bool
 */
-bool Blackboard::getValue(const char* name, float &out)
+bool Blackboard::getValue(std::string &name, float &out)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -89,7 +89,7 @@ bool Blackboard::getValue(const char* name, float &out)
 * @param out The output variable to store the value in
 * @return bool
 */
-bool Blackboard::getValue(const char* name, double &out)
+bool Blackboard::getValue(std::string &name, double &out)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -106,7 +106,7 @@ bool Blackboard::getValue(const char* name, double &out)
 * @param out The output variable to store the value in
 * @return bool
 */
-bool Blackboard::getValue(const char* name, char &out)
+bool Blackboard::getValue(std::string &name, char &out)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -123,7 +123,7 @@ bool Blackboard::getValue(const char* name, char &out)
 * @param out The output variable to store the value in
 * @return bool
 */
-bool Blackboard::getValue(const char* name, std::string &out)
+bool Blackboard::getValue(std::string &name, std::string &out)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -140,7 +140,7 @@ bool Blackboard::getValue(const char* name, std::string &out)
  * @param value The value to set
  * @return bool
  */
-bool Blackboard::setValue(const char* name, const int &value)
+bool Blackboard::setValue(std::string &name, const int &value)
 {
 	auto result = map.find(name);
 	if(result != map.end())
@@ -158,7 +158,7 @@ bool Blackboard::setValue(const char* name, const int &value)
 * @param value The value to set
 * @return bool
 */
-bool Blackboard::setValue(const char* name, const float& value)
+bool Blackboard::setValue(std::string &name, const float& value)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -176,7 +176,7 @@ bool Blackboard::setValue(const char* name, const float& value)
 * @param value The value to set
 * @return bool
 */
-bool Blackboard::setValue(const char* name, const double& value)
+bool Blackboard::setValue(std::string &name, const double& value)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -194,7 +194,7 @@ bool Blackboard::setValue(const char* name, const double& value)
 * @param value The value to set
 * @return bool
 */
-bool Blackboard::setValue(const char* name, const char& value)
+bool Blackboard::setValue(std::string &name, const char& value)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -212,7 +212,7 @@ bool Blackboard::setValue(const char* name, const char& value)
 * @param value The value to set
 * @return bool
 */
-bool Blackboard::setValue(const char* name, const std::string& value)
+bool Blackboard::setValue(std::string &name, const std::string& value)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -229,7 +229,7 @@ bool Blackboard::setValue(const char* name, const std::string& value)
  * @param name The key to search the blackboard for
  * @return BlackboardType*
  */
-BlackboardType* Blackboard::getPointer(const char* name)
+BlackboardType* Blackboard::getPointer(std::string &name)
 {
 	auto result = map.find(name);
 	if (result != map.end())
@@ -248,6 +248,6 @@ void Blackboard::dump()
 	int count = 0;
 	for(auto &item : map)
 	{
-		printf("[%d] \"%s\" (%p)\n", count++, item.first, item.second);
+		printf("[%d] \"%s\" (%p)\n", count++, item.first.c_str(), item.second);
 	}
 }
