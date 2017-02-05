@@ -5,6 +5,7 @@
  */
 void CompositeNode::addChild(Node* child)
 {
+	child->setParent(this);
 	children.push_back(child);
 }
 

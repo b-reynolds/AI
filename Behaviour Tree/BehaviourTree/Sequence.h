@@ -9,6 +9,9 @@ class Sequence : public CompositeNode
 
 public:
 
+	explicit Sequence(const std::string &name) : CompositeNode(name) {}
+	Sequence() : CompositeNode("Sequence") {}
+
 	Status tick() override;
 
 };

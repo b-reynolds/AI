@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{031B7F5E-6B40-4CF2-8D7C-A1F7BD0D52CA}</ProjectGuid>
-    <RootNamespace>BehaviourTree</RootNamespace>
+    <ProjectGuid>{470A25FA-D015-4577-AFBD-DD1C2FF3587F}</ProjectGuid>
+    <RootNamespace>Blackboard</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -74,28 +74,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>$(ProjectDir)SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalLibraryDirectories>$(ProjectDir)SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -104,15 +90,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -122,41 +103,25 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(ProjectDir)SFML\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Blackboard.cpp" />
-    <ClCompile Include="CompositeNode.cpp" />
-    <ClCompile Include="DecoratorNode.cpp" />
-    <ClCompile Include="Inverter.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Selector.cpp" />
-    <ClCompile Include="Sequence.cpp" />
+    <ClCompile Include="..\Blackboard.cpp" />
+    <ClCompile Include="..\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Blackboard.h" />
-    <ClInclude Include="BlackboardBool.h" />
-    <ClInclude Include="BlackboardChar.h" />
-    <ClInclude Include="BlackboardDouble.h" />
-    <ClInclude Include="BlackboardFloat.h" />
-    <ClInclude Include="BlackboardInt.h" />
-    <ClInclude Include="BlackboardString.h" />
-    <ClInclude Include="BlackboardType.h" />
-    <ClInclude Include="CompositeNode.h" />
-    <ClInclude Include="DecoratorNode.h" />
-    <ClInclude Include="Inverter.h" />
-    <ClInclude Include="Node.h" />
-    <ClInclude Include="Selector.h" />
-    <ClInclude Include="Sequence.h" />
+    <ClInclude Include="..\Blackboard.h" />
+    <ClInclude Include="..\BlackboardBool.h" />
+    <ClInclude Include="..\BlackboardChar.h" />
+    <ClInclude Include="..\BlackboardDouble.h" />
+    <ClInclude Include="..\BlackboardFloat.h" />
+    <ClInclude Include="..\BlackboardInt.h" />
+    <ClInclude Include="..\BlackboardString.h" />
+    <ClInclude Include="..\BlackboardType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

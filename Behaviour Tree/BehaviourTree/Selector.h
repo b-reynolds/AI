@@ -8,7 +8,10 @@ class Selector : public CompositeNode
 {
 
 public:
-	
+
+	explicit Selector(const std::string &name) : CompositeNode(name) {}
+	Selector() : CompositeNode("Selector") {}
+
 	Status tick() override;
 
 };

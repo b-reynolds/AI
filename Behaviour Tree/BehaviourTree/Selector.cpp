@@ -5,6 +5,7 @@
 */
 Node::Status Selector::tick()
 {
+	output();
 	for(Node* child : getChildren())
 	{
 		if(child->tick() == SUCCESS)

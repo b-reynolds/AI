@@ -4,6 +4,7 @@
 #include "BlackboardString.h"
 #include "BlackboardDouble.h"
 #include "BlackboardChar.h"
+#include "BlackboardBool.h"
 
 /** Destructor
  * @brief Free allocated memory 
@@ -135,6 +136,23 @@ bool Blackboard::getValue(const std::string &name, std::string &out)
 }
 
 /**
+* @brief Search for and retrieve a boolean from the blackboard
+* @param name The key to search the blackboard for
+* @param out The output variable to store the value in
+* @return bool
+*/
+bool Blackboard::getValue(const std::string& name, bool& out)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		out = reinterpret_cast<BlackboardBool*>(result->second)->getValue();
+		return true;
+	}
+	return false;
+}
+
+/**
  * @brief Search for and set an int value from the blackboard
  * @param name The key to search the blackboard for
  * @param value The value to set
@@ -218,6 +236,24 @@ bool Blackboard::setValue(const std::string &name, const std::string& value)
 	if (result != map.end())
 	{
 		auto item = reinterpret_cast<BlackboardString*>(result->second);
+		item->setValue(value);
+		return true;
+	}
+	return false;
+}
+
+/**
+* @brief Search for and set a boolean value from the blackboard
+* @param name The key to search the blackboard for
+* @param value The value to set
+* @return bool
+*/
+bool Blackboard::setValue(const std::string& name, const bool& value)
+{
+	auto result = map.find(name);
+	if (result != map.end())
+	{
+		auto item = reinterpret_cast<BlackboardBool*>(result->second);
 		item->setValue(value);
 		return true;
 	}

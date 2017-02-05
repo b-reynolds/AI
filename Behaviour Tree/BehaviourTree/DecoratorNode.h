@@ -6,7 +6,9 @@ class DecoratorNode : public Node
 
 public:
 
-	DecoratorNode();
+	explicit DecoratorNode(const std::string &name) : Node(name) {}
+	DecoratorNode() : Node(nodeType) {}
+
 	void setChild(Node* child);
 
 protected:
@@ -15,7 +17,9 @@ protected:
 
 private:
 		
-	Node* child;
+	std::string nodeType = "Decorator";
+
+	Node* child = nullptr;
 
 };
 

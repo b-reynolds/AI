@@ -5,6 +5,7 @@
 */
 Node::Status Sequence::tick()
 {
+	output();
 	for(Node* child : getChildren())
 	{
 		if(child->tick() == FAILURE)
