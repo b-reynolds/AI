@@ -7,13 +7,9 @@ class Inverter : public DecoratorNode
 public:
 
 	explicit Inverter(const std::string &name) : DecoratorNode(name) {}
-	Inverter() : DecoratorNode(nodeType) {}
+	Inverter() : DecoratorNode("Selector") {}
 
 	Status tick() override;
-
-private:
-
-	std::string nodeType = "Selector";
 
 };
 

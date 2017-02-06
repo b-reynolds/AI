@@ -135,12 +135,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Blackboard.cpp" />
+    <ClCompile Include="BlackboardVectorList.cpp" />
     <ClCompile Include="CompositeNode.cpp" />
     <ClCompile Include="DecoratorNode.cpp" />
+    <ClCompile Include="Failer.cpp" />
     <ClCompile Include="Inverter.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="RepeatUntillFail.cpp" />
+    <ClCompile Include="RepeatUntillSuccess.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="Sequence.cpp" />
+    <ClCompile Include="Succeeder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blackboard.h" />
@@ -151,12 +156,18 @@
     <ClInclude Include="BlackboardInt.h" />
     <ClInclude Include="BlackboardString.h" />
     <ClInclude Include="BlackboardType.h" />
+    <ClInclude Include="BlackboardVectorList.h" />
     <ClInclude Include="CompositeNode.h" />
     <ClInclude Include="DecoratorNode.h" />
+    <ClInclude Include="Failer.h" />
     <ClInclude Include="Inverter.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="RepeatUntillFail.h" />
+    <ClInclude Include="RepeatUntillSuccess.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="Sequence.h" />
+    <ClInclude Include="Succeeder.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

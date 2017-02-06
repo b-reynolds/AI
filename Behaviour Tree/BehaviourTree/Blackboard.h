@@ -27,7 +27,6 @@ public:
 	bool setValue(const std::string &name, const std::string &value);
 	bool setValue(const std::string &name, const bool &value);
 
-
 	BlackboardType* getPointer(const std::string &name);
 
 	void dump();

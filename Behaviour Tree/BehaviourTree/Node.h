@@ -35,7 +35,7 @@ public:
 		}
 		for(int i = 0; i < depth; ++i)
 		{
-			printf("    ");
+			printf("----");
 		}
 		printf("%s\n", getNodeType().c_str());
 	}

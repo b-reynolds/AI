@@ -14,6 +14,9 @@
     <Filter Include="Blackboard">
       <UniqueIdentifier>{d8203bec-6ebc-46d1-a1a5-954ee6895668}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Types">
+      <UniqueIdentifier>{b06bccf1-2f01-42ce-923e-4a931e16940b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -35,6 +38,21 @@
       <Filter>Behaviour Tree\Nodes</Filter>
     </ClCompile>
     <ClCompile Include="Blackboard.cpp">
+      <Filter>Blackboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Succeeder.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Failer.cpp">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="RepeatUntillFail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RepeatUntillSuccess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackboardVectorList.cpp">
       <Filter>Blackboard</Filter>
     </ClCompile>
   </ItemGroup>
@@ -79,6 +97,24 @@
       <Filter>Blackboard</Filter>
     </ClInclude>
     <ClInclude Include="BlackboardType.h">
+      <Filter>Blackboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Succeeder.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Failer.h">
+      <Filter>Behaviour Tree\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="RepeatUntillFail.h">
+      <Filter>Blackboard</Filter>
+    </ClInclude>
+    <ClInclude Include="RepeatUntillSuccess.h">
+      <Filter>Blackboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Data Types</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackboardVectorList.h">
       <Filter>Blackboard</Filter>
     </ClInclude>
   </ItemGroup>
