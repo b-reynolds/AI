@@ -26,18 +26,14 @@ public:
 
 	void output() const
 	{
-		int depth = 0;
-		Node* t = getParent();
-		while(t != nullptr)
+		auto depth = 0;
+		auto parent = getParent();
+		while(parent != nullptr)
 		{
+			parent = parent->getParent();
 			depth++;
-			t = t->getParent();
 		}
-		for(int i = 0; i < depth; ++i)
-		{
-			printf("----");
-		}
-		printf("%s\n", getNodeType().c_str());
+		printf("%s> %s\n", std::string(3 * depth, '-').c_str(), getNodeType().c_str());
 	}
 
 private:

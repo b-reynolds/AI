@@ -47,13 +47,10 @@
       <Filter>Behaviour Tree\Nodes</Filter>
     </ClCompile>
     <ClCompile Include="RepeatUntillFail.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Behaviour Tree\Nodes</Filter>
     </ClCompile>
     <ClCompile Include="RepeatUntillSuccess.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BlackboardVectorList.cpp">
-      <Filter>Blackboard</Filter>
+      <Filter>Behaviour Tree\Nodes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,9 +110,6 @@
     </ClInclude>
     <ClInclude Include="Vector2.h">
       <Filter>Data Types</Filter>
-    </ClInclude>
-    <ClInclude Include="BlackboardVectorList.h">
-      <Filter>Blackboard</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
